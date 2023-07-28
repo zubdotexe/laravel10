@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DemoController;
+use App\Http\Controllers\PhotoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,11 +35,15 @@ Route::any('/test', function() {    # post or get jekono theke chole ashbe
 //     return view('demoview');
 // }); 
 
-Route::get('demoview/{username}/{id?}', function($username, $id=null) {
-    // echo $username." ";
-    // echo $id;
+// Route::get('demoview/{username}/{id?}', function($username, $id=null) {
+//     // echo $username." ";
+//     // echo $id;
 
-    $data = compact('username', 'id');
-    // print_r($data);
-    return view('demoview')->with($data);
-});
+//     $data = compact('username', 'id');
+//     // print_r($data);
+//     return view('demoview')->with($data);
+// });
+
+Route::get('/', [DemoController::class, 'index']);
+Route::get('/demoview', [DemoController::class, 'index']);
+Route::resource('photo', PhotoController::class);

@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    Total sal is {{$salary}}
+    Total expense is {{$cal[0]}}
+    <br>
+    Total income is {{$cal[1]}}
+    <br>
+    Profit is {{$cal[1] - $cal[0]}}
 </body>
 </html>

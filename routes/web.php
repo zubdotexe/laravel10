@@ -9,6 +9,7 @@ use App\Http\Controllers\CustomerController;
 // use App\Models\Customer;
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\CaseController;
 
 use App\Http\Controllers\CalcController;
 
@@ -81,4 +82,16 @@ Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name
 Route::get('/employee', [EmployeeController::class, 'index'])->name('employees.index');
 Route::get('/employee/create', [EmployeeController::class, 'create'])->name('employees.create');
 Route::post('/employee', [EmployeeController::class, 'store'])->name('employees.store');
+Route::get('/empolyee/{employee}/edit', [EmployeeController::class, 'edit'])->name('employees.edit');
+Route::put('/empolyee/{employee}/update', [EmployeeController::class, 'update'])->name('employees.update');
+Route::get('/empolyee/{employee}/delete', [EmployeeController::class, 'destroy'])->name('employees.delete');
+
+
+
+
+Route::get('/case', [CaseController::class, 'index'])->name('cases.index');
+Route::get('/case/{case}/edit', [CaseController::class, 'edit'])->name('cases.edit');
+Route::put('/case/{case}/update', [CaseController::class, 'update'])->name('cases.update');
+Route::get('/case/delete', [CaseController::class, 'destroy'])->name('cases.delete');
+
 Route::get('/calc', [CalcController::class, 'totalSal']);

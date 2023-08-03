@@ -42,4 +42,36 @@ class EmployeeController extends Controller
         $totalSal = Employee::sum('salary');
         print_r($totalSal);
     }
+
+    public function edit(Employee $employee)
+    {
+        // dd($emp);
+        return view('employees.edit', ['employee' => $employee]);
+    }
+
+    public function update(Employee $employee, Request $request)
+    {
+        $emp = Employee::where('employee_id', $employee->employee_id)->first();
+
+        $emp->name = $request['name'];
+        $emp->role = $request['role'];
+        $emp->email = $request['email'];
+        $emp->salary = $request['salary'];
+
+        $emp->save();
+
+        return redirect(route('employees.index'));
+    }
+
+    public function destroy(Employee $employee)
+    {
+        // $delData = Employee::find($employee->employee_id);
+
+        if(!is_null($employee))
+        {
+            $employee->delete();
+        }
+
+        return redirect(route('employees.index'));
+    }
 }

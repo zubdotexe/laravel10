@@ -9,6 +9,9 @@
 </head>
 <body>
     <div class="container mt-5">
+        <div class="text-right">
+            <a href="employee/create" class="btn btn-dark">Add employee</a>
+        </div>
         <h2>Employees Information</h2>
         <table class="table table-striped">
             <thead>
@@ -18,15 +21,20 @@
                     <th>Email</th>
                     <th>Salary</th>
                     <th>Action</th>
+                    <!-- <th></th> -->
                 </tr>
             </thead>
             <tbody>
-                @foreach($employeeList as $employee)
+                @foreach($employeeList as $employeeIte)
                     <tr>
-                        <td>{{$employee->name}}</td>
-                        <td>{{$employee->role}}</td>
-                        <td>{{$employee->email}}</td>
-                        <td>{{$employee->salary}}</td>
+                        <td>{{$employeeIte->name}}</td>
+                        <td>{{$employeeIte->role}}</td>
+                        <td>{{$employeeIte->email}}</td>
+                        <td>${{$employeeIte->salary}}</td>
+                        <td>
+                            <a href="{{route('employees.edit', ['employee' => $employeeIte])}}" class="btn btn-primary mr-3">Edit</a>
+                            <a href="{{route('employees.delete', ['employee' => $employeeIte])}}" class="btn btn-danger">Delete</a>
+                        </td>
                     </tr>
                 
                 @endforeach
